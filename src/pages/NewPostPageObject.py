@@ -9,9 +9,16 @@ class NewPostPageObject:
     buttonSelect_id = "picker:ap:0"
     buttonPublish_css = "div[aria-label='Publish'] span[class='CwaK9']"
     buttonConfirm_xpath = "/html[1]/body[1]/div[7]/div[4]/div[1]/div[2]/div[3]/div[2]/span[1]/span[1]"
+    newPostPageCheck_css = "div[aria-label='Publish'] span[class='CwaK9']"
 
     def __init__(self, driver):
         self.driver = driver
+
+    def newPostPageCheck(self):
+        if self.driver.find_element(By.CSS_SELECTOR, self.newPostPageCheck_css):
+            return True
+        else:
+            return False
 
     def clickInsertImage(self):
         self.driver.find_element(By.XPATH, self.buttonInsertImage_css).click()

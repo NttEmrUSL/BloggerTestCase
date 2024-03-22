@@ -17,9 +17,5 @@ class TestPostIsVisible:
         time.sleep(3)
         self.visitorpage = VisitorPageObject(self.driver)
 
-        if self.visitorpage.isPostVisible():
-            assert True
-        else:
-            assert False
-
+        assert self.visitorpage.isPostVisible()
         self.driver.quit()

@@ -20,7 +20,6 @@ class TestPostDelete:
         time.sleep(3)
 
         self.loginpage = LoginPageObject(self.driver)
-        self.mainpage = MainPageObject(self.driver)
         self.postpage = PostPageObject(self.driver)
 
         self.loginpage.clickSignIn()

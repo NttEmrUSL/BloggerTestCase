@@ -21,6 +21,7 @@ class TestCommentDeleted:
         self.loginpage = LoginPageObject(self.driver)
         self.visitorpage = VisitorPageObject(self.driver)
 
+        assert self.visitorpage.visitorPageCheck()
         self.visitorpage.clickPostCommentButton()
         time.sleep(5)
         self.visitorpage.clickSignInButton()

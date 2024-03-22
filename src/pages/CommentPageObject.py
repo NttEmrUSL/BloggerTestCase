@@ -3,8 +3,6 @@ import time
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 
-
-
 class CommentPageObject:
 
     commentText_css = "div[class='Opvl3b']"

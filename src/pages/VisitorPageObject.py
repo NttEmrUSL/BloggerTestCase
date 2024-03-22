@@ -8,12 +8,19 @@ class VisitorPageObject:
     textareaComment_xpath = "//*[@id='yDmH0d']/c-wiz/div/div/c-wiz/div/div/div[2]/div[2]/div[1]/div[2]/textarea"
     buttonPublish_xpath = "//*[@id='yDmH0d']/c-wiz/div/div/c-wiz/div/div/div[2]/div[3]/div[1]/div"
     viewComments_xpath = "//li[@class='comment']"
+    visitorPageCheck_css = "a[href='https://www.blogger.com']"
 
     comment_id = "c8119086250835364148"
     comment_text = "What a great post"
 
     def __init__(self, driver):
         self.driver = driver
+
+    def visitorPageCheck(self):
+        if self.driver.find_element(By.CSS_SELECTOR, self.visitorPageCheck_css):
+            return True
+        else:
+            return False
 
     def isPostVisible(self):
         post = self.driver.find_elements(By.ID, self.postFeatured_id)
