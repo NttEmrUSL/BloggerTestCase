@@ -32,14 +32,14 @@ class TestCommentCheckDelete:
         self.loginpage.clickPasswordNext()
 
         self.mainpage.clickCommentButton()
-        time.sleep(5)
+        time.sleep(3)
 
         self.commentpage.checkCommentText(self.visitorpage.comment_text)
         time.sleep(3)
         self.commentpage.clickDeleteIcon()
-        time.sleep(5)
+        time.sleep(3)
         self.commentpage.clickDeleteButton()
-        time.sleep(5)
+        time.sleep(3)
         self.driver.quit()
 
 

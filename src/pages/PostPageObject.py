@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 
 class PostPageObject:
 
+    viewPost_css = "a[href='./blog/post/edit/2581916393429811882/7547949017194907599']"
     postItem_xpath = "//*[@id='yDmH0d']/c-wiz/div[2]/div/c-wiz/div[2]/c-wiz/div/div/div/div[1]/div"
     postItemDeleteIcon_xpath = "(//span[@class='DPvwYc'][contains(text(),'')])[2]"
     postItemDeleteButton_xpath = "(//span[@class='RveJvd snByac'][normalize-space()='Trash post'])[2]"
@@ -12,6 +13,9 @@ class PostPageObject:
 
     def __init__(self, driver):
         self.driver = driver
+
+    def clickPostView(self):
+        self.driver.find_element(By.CSS_SELECTOR, self.viewPost_css).click()
 
     def clickDeleteIcon(self):
         action = ActionChains(self.driver)

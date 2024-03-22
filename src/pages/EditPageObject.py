@@ -11,6 +11,7 @@ class EditPageObject:
     def __init__(self, driver):
         self.driver = driver
 
+
     def clickPage(self):
         self.driver.switch_to.frame(self.driver.find_element(By.CSS_SELECTOR, "iframe[class='ZW3ZFc editable']"))
         self.driver.find_element(By.XPATH, self.textBoxView_xpath).click()

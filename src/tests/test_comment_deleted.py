@@ -23,13 +23,13 @@ class TestCommentDeleted:
 
         assert self.visitorpage.visitorPageCheck()
         self.visitorpage.clickPostCommentButton()
-        time.sleep(5)
+        time.sleep(3)
         self.visitorpage.clickSignInButton()
         self.loginpage.setEmail("blogger.visitorcase@gmail.com")
         self.loginpage.clickEmailNext()
         self.loginpage.setPassword("bloggertestcasevisitor")
         self.loginpage.clickPasswordNext()
-        time.sleep(5)
+        time.sleep(3)
 
         if self.visitorpage.isCommentDeleted():
             assert True

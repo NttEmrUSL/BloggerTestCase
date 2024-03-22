@@ -6,7 +6,7 @@ from selenium.webdriver.chrome.service import Service
 
 from src.pages.EditPageObject import EditPageObject
 from src.pages.LoginPageObject import LoginPageObject
-from src.pages.MainPageObject import MainPageObject
+from src.pages.PostPageObject import PostPageObject
 
 
 class TestEditPost:
@@ -19,8 +19,8 @@ class TestEditPost:
         self.driver.maximize_window()
 
         self.loginpage = LoginPageObject(self.driver)
-        self.mainpage = MainPageObject(self.driver)
         self.editpage = EditPageObject(self.driver)
+        self.postPage = PostPageObject(self.driver)
 
         self.loginpage.clickSignIn()
         self.loginpage.setEmail("blogger2.testcase@gmail.com")
@@ -29,9 +29,8 @@ class TestEditPost:
         self.loginpage.clickPasswordNext()
 
         self.driver.implicitly_wait(time_to_wait=5)
-        self.mainpage.clickPostButton()
-        time.sleep(5)
-
+        self.postPage.clickPostView()
+        time.sleep(3)
         self.editpage.clickPage()
         time.sleep(3)
         self.editpage.sendText("Hi my name is Emre")

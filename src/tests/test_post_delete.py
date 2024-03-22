@@ -30,9 +30,9 @@ class TestPostDelete:
         time.sleep(3)
 
         self.postpage.clickDeleteIcon()
-        time.sleep(5)
+        time.sleep(3)
         self.postpage.clickDeleteButton()
-        time.sleep(5)
+        time.sleep(3)
         assert self.postpage.isPostDeleted()
         self.driver.quit()
 
