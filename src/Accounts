@@ -1,0 +1,16 @@
+
+
+   #Account 1 admin
+        # blogger.testcase@gmail.com
+        # bloggertestcaseadmin
+
+   #Account 2 admin
+        # blogger2.testcase@gmail.com
+        # bloggertestcaseadmin
+
+   #Account 3 visitor
+        # blogger.visitorcase@gmail.com
+        # bloggertestcasevisitor
+
+
+    https://onlinebloggertest.blogspot.com/  visitor
