@@ -1,0 +1,4 @@
+2024-03-28 14:31:41,418 - TestCheckPostIsVisible - INFO - ---- TEST CHECK POST IS VISIBLE ----
+2024-03-28 14:31:41,418 - TestCheckPostIsVisible - INFO - Open browser and visit https://onlinebloggertest.blogspot.com/
+2024-03-28 14:31:45,367 - TestCheckPostIsVisible - INFO - Check post visibility
+2024-03-28 14:31:45,531 - TestCheckPostIsVisible - INFO - Test Finished Successfully

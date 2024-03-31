@@ -14,30 +14,38 @@ class NewPostPageObject:
     def __init__(self, driver):
         self.driver = driver
 
+    #Check post is visible
     def newPostPageCheck(self):
         if self.driver.find_element(By.CSS_SELECTOR, self.newPostPageCheck_css):
             return True
         else:
             return False
 
+    #Click insert image
     def clickInsertImage(self):
         self.driver.find_element(By.XPATH, self.buttonInsertImage_css).click()
 
+    #Click add url
     def clickAddByUrl(self):
         self.driver.find_element(By.CSS_SELECTOR, self.buttonInsertByUrl_css).click()
 
+    #Set image url
+    #params string url: image url whatever you want
     def setImageUrl(self, url):
         self.driver.switch_to.frame(self.driver.find_element(By.XPATH, "/html/body/div[11]/div[2]/div/iframe"))
         txtbox_url = self.driver.find_element(By.CSS_SELECTOR, self.textBoxUrl_css)
         pyperclip.copy(url)
         txtbox_url.send_keys(Keys.CONTROL, 'v')
 
+    #Click select
     def clickSelect(self):
         self.driver.find_element(By.ID, self.buttonSelect_id).click()
         self.driver.switch_to.default_content()
 
+    #Click publish
     def clickPublish(self):
         self.driver.find_element(By.CSS_SELECTOR, self.buttonPublish_css).click()
 
+    #Click confirm
     def clickConfirm(self):
         self.driver.find_element(By.XPATH, self.buttonConfirm_xpath).click()

@@ -13,6 +13,8 @@ class CommentPageObject:
     def __init__(self,driver):
         self.driver = driver
 
+    #Check comment is true
+    #params string commentvisitor: Comment which visitor wrote
     def checkCommentText(self, commentvisitor):
         comment = self.driver.find_element(By.CSS_SELECTOR, self.commentText_css)
 
@@ -24,7 +26,7 @@ class CommentPageObject:
         else:
             assert False
 
-
+    #Click delete icon
     def clickDeleteIcon(self):
         action = ActionChains(self.driver)
         itemlist = self.driver.find_element(By.XPATH, self.commentItem_xpath)
@@ -32,6 +34,7 @@ class CommentPageObject:
         time.sleep(3)
         self.driver.find_element(By.XPATH, self.commentDeleteIcon_xpath).click()
 
+    #Click delete button
     def clickDeleteButton(self):
         self.driver.find_element(By.XPATH, self.commentDeleteButton_xpath).click()
 

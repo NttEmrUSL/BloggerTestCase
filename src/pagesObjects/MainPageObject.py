@@ -1,5 +1,4 @@
 from selenium.webdriver.common.by import By
-
 class MainPageObject:
 
     buttonNewPost_css = "c-wiz[class='zQTmif SSPGKf eejsDc qWnhY O3LMFb haXJ6e'] div[class='Iun9']"
@@ -10,12 +9,15 @@ class MainPageObject:
     def __init__(self, driver):
         self.driver = driver
 
+    #Click New Post button for create post
     def clickNewPostButton(self):
         self.driver.find_element(By.CSS_SELECTOR, self.buttonNewPost_css).click()
 
+    #Click Comment button for view comments
     def clickCommentButton(self):
         self.driver.find_element(By.XPATH, self.buttonComment_xpath).click()
 
+    #Check main page is loading
     def mainPageCheck(self):
         if self.driver.find_element(By.CSS_SELECTOR, self.mainPageCheck_css):
             return True

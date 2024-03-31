@@ -14,9 +14,11 @@ class PostPageObject:
     def __init__(self, driver):
         self.driver = driver
 
+    #Click Post view area
     def clickPostView(self):
         self.driver.find_element(By.CSS_SELECTOR, self.viewPost_css).click()
 
+    #Click delete icon
     def clickDeleteIcon(self):
         action = ActionChains(self.driver)
         itemlist = self.driver.find_element(By.XPATH, self.postItem_xpath)
@@ -24,10 +26,11 @@ class PostPageObject:
         time.sleep(5)
         self.driver.find_element(By.XPATH, self.postItemDeleteIcon_xpath).click()
 
+    #Click delete button
     def clickDeleteButton(self):
         self.driver.find_element(By.XPATH, self.postItemDeleteButton_xpath).click()
 
-
+    #Check is post deleted
     def isPostDeleted(self):
         posts = self.driver.find_elements(By.CLASS_NAME, self.post_count_class)
         if len(posts) <= 1:
