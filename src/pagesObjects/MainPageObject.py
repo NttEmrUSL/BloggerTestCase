@@ -1,3 +1,5 @@
+from telnetlib import EC
+
 from selenium.webdriver.common.by import By
 class MainPageObject:
 
@@ -8,10 +10,16 @@ class MainPageObject:
 
     def __init__(self, driver):
         self.driver = driver
+        self.mainPageCheck()
 
     #Click New Post button for create post
     def clickNewPostButton(self):
+        """
+        This Function Clicks to New Post Button
+        @param str email: blabla
+        """
         self.driver.find_element(By.CSS_SELECTOR, self.buttonNewPost_css).click()
+
 
     #Click Comment button for view comments
     def clickCommentButton(self):
@@ -19,6 +27,7 @@ class MainPageObject:
 
     #Check main page is loading
     def mainPageCheck(self):
+        # self.driver.find_element("EC") locator and string bu yapılacak
         if self.driver.find_element(By.CSS_SELECTOR, self.mainPageCheck_css):
             return True
         else:

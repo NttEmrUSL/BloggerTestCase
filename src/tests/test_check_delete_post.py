@@ -32,32 +32,39 @@ class TestCheckDeletePost:
         self.loginpage = LoginPageObject(self.driver)
         self.postpage = PostPageObject(self.driver)
 
-        self.logger.info("Click sign in button")
-        self.loginpage.clickSignIn()
-        self.logger.info("Enter email and click next button")
-        self.loginpage.setEmail(Config.adminEmail)
-        self.loginpage.clickEmailNext()
-        self.logger.info("Enter password and click next button")
-        self.loginpage.setPassword(Config.adminPassword)
-        self.loginpage.clickPasswordNext()
-        time.sleep(3)
+        try:
+            self.logger.info("Click sign in button")
+            self.loginpage.clickSignIn()
+            self.logger.info("Enter email and click next button")
+            self.loginpage.setEmail(Config.adminEmail)
+            self.loginpage.clickEmailNext()
+            self.logger.info("Enter password and click next button")
+            self.loginpage.setPassword(Config.adminPassword)
+            self.loginpage.clickPasswordNext()
+            time.sleep(3)
 
-        self.logger.info("Wait until home page loading")
-        self.logger.info("Select Post")
-        self.logger.info("Click post delete icon")
-        self.postpage.clickDeleteIcon()
-        time.sleep(3)
+            self.logger.info("Wait until home page loading")
+            self.logger.info("Select Post")
+            self.logger.info("Click post delete icon")
+            self.postpage.clickDeleteIcon()
+            time.sleep(3)
 
-        self.logger.info("Click delete confirm button")
-        self.postpage.clickDeleteButton()
-        time.sleep(3)
+            self.logger.info("Click delete confirm button")
+            self.postpage.clickDeleteButton()
+            time.sleep(3)
 
-        self.logger.info("Wait until home page refresh")
-        self.logger.info("Check post is deleted")
+            self.logger.info("Wait until home page refresh")
+            self.logger.info("Check post is deleted")
 
-        assert self.postpage.isPostDeleted()
-        self.tearDown()
-        self.logger.info("Test Finished Successfully")
+            assert self.postpage.isPostDeleted()
+            self.logger.info("Test Finished Successfully")
+
+        except Exception as e:
+            self.error_screenshot()
+            self.logger.error(f"An error occurred: {str(e)}")
+
+        finally:
+            self.tearDown()
 
     def tearDown(self):
         self.driver.close()

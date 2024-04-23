@@ -26,7 +26,7 @@ class TestCheckEditPost:
     def test_check_edit_post(self):
         self.logger = BasePage.loggerInit(self, self.__class__.__name__)
 
-        self.logger.info("---- TEST CHECK EDİT POST ----")
+        self.logger.info("---- TEST CHECK EDIT POST ----")
         self.logger.info("Open browser and visit https://www.blogger.com/about/")
         self.driver = BasePage.setup_method(self, Config.adminBloggerUrl)
 
@@ -34,38 +34,47 @@ class TestCheckEditPost:
         self.editpage = EditPageObject(self.driver)
         self.postPage = PostPageObject(self.driver)
 
-        self.logger.info("Click sign in button")
-        self.loginpage.clickSignIn()
-        self.logger.info("Enter email and click next button")
-        self.loginpage.setEmail(Config.adminEmail)
-        self.loginpage.clickEmailNext()
-        self.logger.info("Enter password and click next button")
-        self.loginpage.setPassword(Config.adminPassword)
-        self.loginpage.clickPasswordNext()
+        try:
+            self.logger.info("Click sign in button")
+            self.loginpage.clickSignIn()
+            self.logger.info("Enter email and click next button")
+            self.loginpage.setEmail(Config.adminEmail)
+            self.loginpage.clickEmailNext()
+            self.logger.info("Enter password and click next button")
+            self.loginpage.setPassword(Config.adminPassword)
+            self.loginpage.clickPasswordNext()
 
-        self.logger.info("Wait until home page loading")
-        self.driver.implicitly_wait(time_to_wait=5)
+            self.logger.info("Wait until home page loading")
+            self.driver.implicitly_wait(time_to_wait=5)
 
-        self.logger.info("Click the post that has been created")
-        self.postPage.clickPostView()
-        time.sleep(3)
+            self.logger.info("Click the post that has been created")
+            self.postPage.clickPostView()
+            time.sleep(3)
 
-        self.logger.info("Click the page ")
-        self.editpage.clickPage()
-        time.sleep(3)
+            self.logger.info("Click the page ")
+            self.editpage.clickPage()
+            time.sleep(3)
 
-        self.logger.info("Edit the text with 'Hi my Name is Emre' ")
-        self.editpage.sendText("Hi my name is Emre")
-        time.sleep(3)
+            self.logger.info("Edit the text with 'Hi my Name is Emre' ")
+            self.editpage.sendText("Hi my name is Emre")
+            time.sleep(3)
 
-        self.logger.info("Click Update button")
-        self.editpage.clickUpdateButton()
-        time.sleep(3)
+            self.logger.info("Click Update button")
+            self.editpage.clickUpdateButton()
+            time.sleep(3)
 
-        self.logger.info("Click Back button ")
-        self.editpage.clickBackToMainPage()
-        time.sleep(2)
-        self.tearDown()
-        self.logger.info("Test Finished Successfully")
+            self.logger.info("Click Back button ")
+            self.editpage.clickBackToMainPage()
+            time.sleep(2)
+            self.logger.info("Test Finished Successfully")
+
+        except Exception as e:
+            self.error_screenshot()
+            self.logger.error(f"An error occurred: {str(e)}")
+
+        finally:
+            self.tearDown()
+
     def tearDown(self):
         self.driver.close()
+

@@ -1,4 +1,2 @@
-2024-03-28 14:31:41,418 - TestCheckPostIsVisible - INFO - ---- TEST CHECK POST IS VISIBLE ----
-2024-03-28 14:31:41,418 - TestCheckPostIsVisible - INFO - Open browser and visit https://onlinebloggertest.blogspot.com/
-2024-03-28 14:31:45,367 - TestCheckPostIsVisible - INFO - Check post visibility
-2024-03-28 14:31:45,531 - TestCheckPostIsVisible - INFO - Test Finished Successfully
+2024-03-31 22:00:19,991 - TestCheckDeletePost - INFO - ---- TEST CHECK DELETE POST ----
+2024-03-31 22:00:19,992 - TestCheckDeletePost - INFO - Open browser and visit https://www.blogger.com/about/

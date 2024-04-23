@@ -31,34 +31,43 @@ class TestCheckCommentPost:
         self.visitorpage = VisitorPageObject(self.driver)
         self.loginpage = LoginPageObject(self.driver)
 
-        self.logger.info("Click 'Post a Comment' button")
-        assert self.visitorpage.visitorPageCheck()
-        self.visitorpage.clickPostCommentButton()
-        time.sleep(3)
+        try:
+            self.logger.info("Click 'Post a Comment' button")
+            assert self.visitorpage.visitorPageCheck()
+            self.visitorpage.clickPostCommentButton()
+            time.sleep(3)
 
-        self.logger.info("Click 'Sign in With Google' button")
-        self.visitorpage.clickSignInButton()
+            self.logger.info("Click 'Sign in With Google' button")
+            self.visitorpage.clickSignInButton()
 
-        self.logger.info("Enter email and click next button")
-        self.loginpage.setEmail(Config.visitorEmail)
-        self.loginpage.clickEmailNext()
+            self.logger.info("Enter email and click next button")
+            self.loginpage.setEmail(Config.visitorEmail)
+            self.loginpage.clickEmailNext()
 
-        self.logger.info("Enter password and click next button")
-        self.loginpage.setPassword(Config.visitorPassword)
-        self.loginpage.clickPasswordNext()
-        time.sleep(3)
+            self.logger.info("Enter password and click next button")
+            self.loginpage.setPassword(Config.visitorPassword)
+            self.loginpage.clickPasswordNext()
+            time.sleep(3)
 
-        self.logger.info("Wait until post page loading ")
-        self.logger.info("Click Enter Comment textbox")
-        self.logger.info("Enter a comment")
+            self.logger.info("Wait until post page loading ")
+            self.logger.info("Click Enter Comment textbox")
+            self.logger.info("Enter a comment")
 
-        self.visitorpage.enterComment("What a great post ")
-        time.sleep(3)
+            self.visitorpage.enterComment("What a great post ")
+            time.sleep(3)
 
-        self.logger.info("Click Publish button")
-        self.visitorpage.publishComment()
-        time.sleep(3)
-        self.tearDown()
-        self.logger.info("Test Finished Successfully")
+            self.logger.info("Click Publish button")
+            self.visitorpage.publishComment()
+            time.sleep(3)
+
+            self.logger.info("Test Finished Successfully")
+
+        except Exception as e:
+            BasePage.error_screenshot(self)
+            self.logger.error(f"An error occurred: {str(e)}")
+
+        finally:
+            self.tearDown()
+
     def tearDown(self):
         self.driver.close()

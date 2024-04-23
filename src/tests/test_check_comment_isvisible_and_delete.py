@@ -35,36 +35,45 @@ class TestCheckCommentIsVisibleAndDelete:
         self.commentpage = CommentPageObject(self.driver)
         self.visitorpage = VisitorPageObject(self.driver)
 
-        self.logger.info("Click sign in button")
-        self.loginpage.clickSignIn()
+        try:
+            self.logger.info("Click sign in button")
+            self.loginpage.clickSignIn()
 
-        self.logger.info("Enter email and click next button")
-        self.loginpage.setEmail(Config.adminEmail)
-        self.loginpage.clickEmailNext()
+            self.logger.info("Enter email and click next button")
+            self.loginpage.setEmail(Config.adminEmail)
+            self.loginpage.clickEmailNext()
 
-        self.logger.info("Enter password and click next button")
-        self.loginpage.setPassword(Config.adminPassword)
-        self.loginpage.clickPasswordNext()
-        self.logger.info("Wait until home page loading ")
+            self.logger.info("Enter password and click next button")
+            self.loginpage.setPassword(Config.adminPassword)
+            self.loginpage.clickPasswordNext()
 
-        self.logger.info("Click Comment Button")
-        self.mainpage.clickCommentButton()
-        time.sleep(3)
+            self.logger.info("Wait until home page loading ")
+            self.driver.implicitly_wait(time_to_wait=5)
 
-        self.logger.info("Check comment is visible")
-        self.commentpage.checkCommentText(self.visitorpage.comment_text)
-        time.sleep(3)
+            self.logger.info("Click Comment Button")
+            self.mainpage.clickCommentButton()
+            time.sleep(3)
 
-        self.logger.info("Click delete icon ")
-        self.commentpage.clickDeleteIcon()
-        time.sleep(3)
+            self.logger.info("Check comment is visible")
+            self.commentpage.checkCommentText(self.visitorpage.comment_text)
+            time.sleep(3)
 
-        self.logger.info("Click delete confirm button")
-        self.commentpage.clickDeleteButton()
-        time.sleep(3)
-        self.tearDown()
-        self.logger.info("Test Finished Successfully")
+            self.logger.info("Click delete icon ")
+            self.commentpage.clickDeleteIcon()
+            time.sleep(3)
 
+            self.logger.info("Click delete confirm button")
+            self.commentpage.clickDeleteButton()
+            time.sleep(3)
+
+            self.logger.info("Test Finished Successfully")
+
+        except Exception as e:
+            self.error_screenshot()
+            self.logger.error(f"An error occurred: {str(e)}")
+
+        finally:
+            self.tearDown()
 
     def tearDown(self):
         self.driver.close()

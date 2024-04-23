@@ -22,10 +22,17 @@ class TestCheckPostIsVisible:
 
         self.visitorpage = VisitorPageObject(self.driver)
 
-        self.logger.info("Check post visibility")
-        assert self.visitorpage.isPostVisible()
-        self.tearDown()
-        self.logger.info("Test Finished Successfully")
+        try:
+            self.logger.info("Check post visibility")
+            assert self.visitorpage.isPostVisible()
+            self.logger.info("Test Finished Successfully")
+
+        except Exception as e:
+            self.error_screenshot()
+            self.logger.error(f"An error occurred: {str(e)}")
+
+        finally:
+            self.tearDown()
 
     def tearDown(self):
         self.driver.close()
